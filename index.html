@@ -1,13 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=\, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Dev Challenge Game</title>
     <link rel="stylesheet" href="CSS/style.css">
     <script defer src="JS/app.js"></script>
 </head>
-<body>
-    
+
+<body style="text-align: center;">
+    <header>
+        <h1 id="game-name" style="display: inline;">Web Dev Challenge</h1>
+        <p id="more-info-icon" style="display: inline;">🛈</p>
+        <p>Compete head-to-head and see who knows HTML, CSS and JavaScript best 🚀!</p>
+        <hr>
+    </header>
+
+    <main>
+
+        <h2>Enter Players' Names & Choose a Difficulty Level to Begin.</h2>
+
+        <section id="players-names-section">
+            <h3>Players Names</h3>
+            <p style="display: inline;">Player 1 Name is </p>
+            <input type="text" id="player1-name" style="display: inline;">
+            <br>
+            <p style="display: inline;">Player 2 Name is </p>
+            <input type="text" id="player2-name" style="display: inline;">
+        </section>
+
+        <section id="difficulty-section">
+            <h3>Questions Difficulty Level</h3>
+            <div id="difficulty-buttons">
+                <button class="difficulty-btn">Easy</button>
+                <button class="difficulty-btn">Medium</button>
+                <button class="difficulty-btn">Hard</button>
+            </div>
+        </section>
+
+        <br>
+        <br>
+
+        <section id="start-button-section">
+            <button id="start-btn">Start Challenge</button>
+        </section>
+
+    </main>
 </body>
+
 </html>
