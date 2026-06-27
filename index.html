@@ -4,40 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Dev Challenge Game</title>
-    <link rel="stylesheet" href="CSS/style.css">
+    <title>WebDevChallenge Game</title>
+    <link rel="stylesheet" href="CSS/indexStyle.css">
     <script defer src="JS/app.js"></script>
 </head>
 
-<body style="text-align: center;">
+<body>
     <header>
-        <h1 id="game-name" style="display: inline;">Web Dev Challenge</h1>
-        <p id="more-info-icon" style="display: inline;">🛈</p>
-        <p>Compete head-to-head and see who knows HTML, CSS, and JavaScript best 🚀!</p>
-        <hr>
+        <p class="code-comment">//MULTIPLAYER QUIZ GAME</p>
+        <h1 id="game-name">Web<span style="color: #58A6FF;">Dev</span>Challenge <span id="more-info-icon">🛈</span></h1>
+        <p id="sentence">Compete head-to-head and see who knows HTML, CSS, and JavaScript best 🚀!</p>
     </header>
     <main>
-        <h2>Enter Player Names & Choose a Difficulty Level to Begin.</h2>
+        <h2 id="enter-choose">Enter Player Names & Choose a Difficulty Level to Begin</h2>
         <section id="player-names-section">
-            <h3>Player Names</h3>
-            <p style="display: inline;">Player 1 Name is </p>
-            <input type="text" id="player1-name" style="display: inline;">
-            <br>
-            <p style="display: inline;">Player 2 Name is </p>
-            <input type="text" id="player2-name" style="display: inline;">
+            <h3 class="code-comment">//PLAYER NAMES</h3>
+            <p class="pNames">Player 1</p>
+            <input type="text" id="player1-name" placeholder="Enter Player 1 Name">
+            <p class="pNames">Player 2</p>
+            <input type="text" id="player2-name" placeholder="Enter Player 2 Name">
         </section>
         <section id="difficulty-section">
-            <h3>Select Difficulty Level</h3>
-            <div id="difficulty-buttons">
-                <button class="difficulty-btn">Easy</button>
-                <button class="difficulty-btn">Medium</button>
-                <button class="difficulty-btn">Hard</button>
+            <h3 class="code-comment">//DIFFICUlTY LEVEL</h3>
+            <div id="difficulty-btn">
+                <button class="easy-btn">Easy</button>
+                <button class="med-btn">Medium</button>
+                <button class="hard-btn">Hard</button>
             </div>
         </section>
-        <br>
-        <br>
         <section id="start-button-section">
-            <button id="start-btn"><a href="./gamePage.html">Start Challenge</a></button>
+            <button id="start-btn" disabled>Start the Challenge</button>
         </section>
     </main>
 </body>
