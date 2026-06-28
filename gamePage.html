@@ -6,32 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebDevChallenge Game</title>
     <link rel="stylesheet" href="CSS/gameStyle.css">
-    <script defer src=""></script>
+    <script defer src="./JS/app.js"></script>
 </head>
 
-<body style="text-align: center;">
+<body">
     <header>
-        <h1 id="game-name">Web<span style="color: #58A6FF;">Dev</span>Challenge <span id="more-info-icon">🛈</span></h1>
+        <p id="code-comment">//MULTIPLAYER QUIZ GAME</p>
+        <h1 id="game-name">Web<span style="color: #58A6FF;">Dev</span>Challenge</h1>
     </header>
     <main>
         <section id="player-timer-section">
-            <p id="player-turn" style="display: inline;"></p>
-            <p id="timer" style="display: inline;"></p>
+            <p id="player-turn"></p>
+            <p id="timer"></p>
         </section>
-        <section id="question-section">
+        <section id="question-answer-section">
             <p id="question"></p>
-        </section>
-        <section id="options-sction">
-            <button id="option1-btn"></button>
-            <button id="option2-btn"></button>
-            <button id="option3-btn"></button>
+            <section id="options-sction">
+                <button id="option1-btn"></button>
+                <button id="option2-btn"></button>
+                <button id="option3-btn"></button>
+                <button id="option4-btn"></button>
+            </section>
         </section>
         <br>
         <section id="quit-results-buttons-section">
-            <button id="quit-btn"><a href="./index.html">Quit Game</a></button>
-            <button id="quit-btn" hidden><a href="./resultsPage.html">Show Results</a></button>
+            <button id="quit-btn">Quit Game</button>
+            <button id="results-btn" hidden>Show Results</button>
         </section>
     </main>
-</body>
+    </body>
 
 </html>

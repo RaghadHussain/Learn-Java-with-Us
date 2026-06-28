@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebDevChallenge Game</title>
+    <title>WebDevChallenge Results</title>
     <link rel="stylesheet" href="CSS/resultsStyle.css">
-    <script defer src=""></script>
+    <script defer src="./JS/app.js"></script>
 </head>
 
-<body style="text-align: center;">
+<body">
     <header>
         <h1 id="game-name">Web<span style="color: #58A6FF;">Dev</span>Challenge <span id="more-info-icon">🛈</span></h1>
         <h2 id="winner-name"></h2>
@@ -20,11 +20,11 @@
             <p id="player2-score"></p>
         </section>
         <section id="right-answers-section">
-            <h3>Questions Review</h3>
-            <h4>The Right Answers: </h4>
+            <h3 id="QR">Questions Review</h3>
+            <p id="questions-answers"></p>
         </section>
         <section id="back-button-section">
-            <button id="back-home-btn"><a href="./index.html">Back to Home</a></button>
+            <button id="back-home-btn"><a href="./index.html">Back Home</a></button>
         </section>
     </main>
 </body>

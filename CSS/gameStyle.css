@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #0d1117;
+    color: #e6edf3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 28px 40px;
+    gap: 28px;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#code-comment {
+    font-family: "Fira Code", monospace;
+    font-size: 13px;
+    color: #58a6ff;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+}
+
+#game-name {
+    font-family: "Fira Code", monospace;
+    font-size: 40px;
+    font-weight: 600;
+    color: #e6edf3;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+    max-width: 500px;
+}
+
+#player-timer-section {
+    background-color: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 10px;
+    padding: 20px 24px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+#player-turn {
+    font-family: "Fira Code", monospace;
+    font-size: 15px;
+    color: #58a6ff;
+    letter-spacing: 0.04em;
+}
+
+#timer {
+    font-family: "Fira Code", monospace;
+    font-size: 17px;
+    color: #f85149;
+    font-weight: 600;
+}
+
+#question-answer-section {
+    background-color: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 10px;
+    padding: 20px 24px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+#options-sction {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    width: 100%;
+}
+
+#option1-btn,
+#option2-btn,
+#option3-btn,
+#option4-btn {
+    width: 100%;
+    max-width: 140px;
+    padding: 14px 12px;
+    background-color: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    font-family: "Fira Code", monospace;
+    font-size: 13px;
+    color: #e6edf3;
+    text-align: center;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+#option1-btn:hover,
+#option2-btn:hover,
+#option3-btn:hover,
+#option4-btn:hover {
+    border-color: #58a6ff;
+    background-color: #1f6feb18;
+    color: 58a6ff;
+}
+
+#quit-results-buttons-section {
+    padding: 20px 24px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+#quit-btn, #results-btn{
+    padding: 10px 28px;
+    background-color: transparent;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    font-family: "Fira Code", monospace;
+    font-size: 13px;
+    color: #8b949e;
+    transition: all .2s;
+}
+
+#quit-btn:hover, #results-btn:hover{
+    border-color: #58a6ff;
+    color: #58a6ff;
+}
