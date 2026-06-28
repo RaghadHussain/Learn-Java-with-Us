@@ -50,7 +50,7 @@ header {
 }
 
 #sentence {
-    font-family: "Inter", system-ui;
+    font-family: "Inter", sans-serif;
     font-size: 12px;
     color: #8b949e;
 }
@@ -85,14 +85,14 @@ main {
 }
 
 .pNames {
-    font-family: "Inter", system-ui;
+    font-family: "Inter", sans-serif;
     font-size: 13px;
     color: #8b949e;
 }
 
 #player1-name,
 #player2-name {
-    font-family: "Inter", system-ui;
+    font-family: "Inter", sans-serif;
     background-color: #0d1117;
     border: 1px solid #30363d;
     border-radius: 7px;
@@ -194,8 +194,4 @@ main {
 #start-btn:disabled {
     background-color: grey;
     cursor: not-allowed;
-}
-
-#start-btn:active {
-    color: aliceblue;
 }

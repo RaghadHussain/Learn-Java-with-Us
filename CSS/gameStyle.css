@@ -144,7 +144,11 @@ main {
     transition: all .2s;
 }
 
-#quit-btn:hover, #results-btn:hover{
+#quit-btn:hover{
+    border-color: #f85149;
+    color: #f85149;
+}
+#results-btn:hover{
     border-color: #58a6ff;
     color: #58a6ff;
 }
