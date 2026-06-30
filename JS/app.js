@@ -19,9 +19,12 @@ const op3 = document.querySelector('#option3-btn')
 const op4 = document.querySelector('#option4-btn')
 const playerTurnElement = document.querySelector('#player-turn')
 
-
 // Result Page 
 const backbtnElement = document.querySelector('#back-home-btn')
+const winnerNameElement = document.querySelector('#winner-name')
+const p1ScoreElement = document.querySelector('#player1-score')
+const p2ScoreElement = document.querySelector('#player2-score')
+const qeustionReviewElement = document.querySelector('#questions-answers')
 
 
 // Variables
@@ -34,7 +37,13 @@ let time = 60
 let questionIndex = 0
 let difficultyLevel = null
 
-//local Storage
+//Local Storage
+const player1NameSaved = localStorage.getItem('player1Name')
+const player2NameSaved = localStorage.getItem('player2Name')
+const p1ScoreSaved = localStorage.getItem('p1Score')
+const p2ScoreSaved = localStorage.getItem('p2Score')
+const tieSaved = localStorage.getItem('tie')
+const winnerNameSaved = localStorage.getItem('winnerName')
 
 
 //Arrays 
@@ -168,7 +177,6 @@ const hardQuestion = [
 ]
 
 
-
 // Functions 
 
 // Checks if the Player Names are Entered and if the Difficulty is Selected 
@@ -238,9 +246,9 @@ function checkForWinner() {
         tie = true
     }
     else if (p1Score > p2Score) {
-        winnerName = player1Name.textContent
+        winnerName = player1NameSaved
     }
-    else { winnerName = player2Name.textContent }
+    else { winnerName = player2NameSaved }
 }
 
 // Check if the Clicked Option is right 
@@ -256,13 +264,32 @@ function handleOptionsClick(event) {
     questionIndex++
     checkEndOfTurn()
     checkIfFinshed()
-    showQeustions()
+    if (winnerName == null && tie == false) {
+        showQeustions()
+    }
 }
 
 function checkIfFinshed() {
     if (winnerName != null || tie != false) {
         showResultsBtn.hidden = false
+        localStorage.setItem('p1Score', p1Score)
+        localStorage.setItem('p2Score', p2Score)
+        localStorage.setItem('winnerName', winnerName)
+        localStorage.setItem('tie', tie)
     }
+}
+
+function showSavedResults() {
+    if (winnerNameSaved) {
+        winnerNameElement.textContent = `Congrats ${winnerNameSaved}!!`
+    }
+    else if (tieSaved === 'true') {
+        winnerNameElement.textContent = 'It\'s a Tie !'
+    }
+
+    p1ScoreElement.textContent = `${player1NameSaved}'s Score is ${p1ScoreSaved}`
+    p2ScoreElement.textContent = `${player2NameSaved}'s Score is ${p2ScoreSaved}`
+
 }
 
 
@@ -281,7 +308,9 @@ if (qeustion) {
     showQeustions()
 }
 
-
+if (p1ScoreElement && p2ScoreElement) {
+    showSavedResults()
+}
 
 // Event Listeners
 optAll.forEach(element => element.addEventListener('click', handleOptionsClick))
