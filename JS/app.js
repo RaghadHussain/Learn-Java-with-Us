@@ -165,10 +165,21 @@ const hardQuestion = [
 
 
 
-// Functions
+// Functions 
+setInterval(() => {
+    if (time > 0) {
+        time--
+        showTimer.textContent = time
+    }
+
+}, 1000)
+
+
+
 
 
 // Event Listener
+
 
 
 
