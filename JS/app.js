@@ -174,12 +174,65 @@ setInterval(() => {
 
 }, 1000)
 
+function showQeustions() {
+    // if (difficultyBtn.id === 'easy-btn') {
+    playerTurnElement.textContent = `Player ${turn}'s turn`
+    qeustion.textContent = easyQuestion[questionIndex].question
+    op1.textContent = easyQuestion[questionIndex].option1
+    op2.textContent = easyQuestion[questionIndex].option2
+    op3.textContent = easyQuestion[questionIndex].option3
+    op4.textContent = easyQuestion[questionIndex].option4
+
+}
+
+function switchTurn() {
+    if (turn === 1) {
+        turn = 2
+    }
+}
+
+function checkEndOfTurn() {
+    if (questionIndex === easyQuestion.length && turn === 1 || time === 0 && turn === 1) {
+        switchTurn()
+        questionIndex = 0
+        time = 60
+    }
+    else if (questionIndex === easyQuestion.length && turn === 2 || time === 0 && turn === 2) {
+        checkForWinner()
+    }
+}
+function handleOptionsClick(event) {
+
+    if (event.target.textContent === easyQuestion[questionIndex].rightAnswer) {
+        if (turn === 1) {
+            p1Score++
+        }
+        else {
+            p2Score++
+        }
+    }
+    questionIndex++
+    checkEndOfTurn()
+    showQeustions()
+}
+function checkForWinner() {
+    if (p1Score === p2Score) {
+        tie = true
+    }
+    else if (p1Score > p2Score) {
+        winner = player1Name.textContent
+    }
+    else { winner = player2Name.textContent }
+}
 
 
 
+showQeustions()
 
 // Event Listener
-
+optAll.forEach((element) => {
+    element.addEventListener('click', handleOptionsClick)
+})
 
 
 
