@@ -141,7 +141,7 @@ main {
 }
 
 #easy-btn:hover,
-#easy-btn:active {
+#easy-btn:focus {
     background-color: #3fb95018;
     border-color: #3fb950;
 }
@@ -151,7 +151,7 @@ main {
 }
 
 #med-btn:hover,
-#med-btn:active {
+#med-btn:focus {
     background-color: #d2992218;
     border-color: #d29922;
 }
@@ -161,7 +161,7 @@ main {
 }
 
 #hard-btn:hover,
-#hard-btn:active {
+#hard-btn:focus {
     background-color: #f8514918;
     border-color: #f85149;
 }

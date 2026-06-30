@@ -1,4 +1,6 @@
 // Constants 
+
+// Index Page
 const player1Name = document.querySelector('#player1-name')
 const player2Name = document.querySelector('#player2-name')
 const difficultyBtn = document.querySelectorAll('.difficulty-button')
@@ -15,8 +17,9 @@ const op1 = document.querySelector('#option1-btn')
 const op2 = document.querySelector('#option2-btn')
 const op3 = document.querySelector('#option3-btn')
 const op4 = document.querySelector('#option4-btn')
-
 const playerTurnElement = document.querySelector('#player-turn')
+
+// Result Page 
 
 
 
@@ -29,6 +32,7 @@ let tie = false
 let winnerName
 let time = 60
 let questionIndex = 0
+let difficultyLevel = null
 
 //local Storage
 
@@ -166,14 +170,45 @@ const hardQuestion = [
 
 
 // Functions 
-setInterval(() => {
+
+// Checks if the Player Names are Entered and if the Difficulty is Selected 
+function checkForPAndD() {
+    if (player1Name.value != '' && player2Name.value != '' && difficultyLevel != null) {
+        startBtn.disabled = false
+    }
+}
+
+function difficultyLevelSelection(event) {
+    if (event.target.textContent === 'Easy') {
+        difficultyLevel = 'Esay'
+    }
+    else if (event.target.textContent === 'Medium') {
+        difficultyLevel = 'Medium'
+    }
+    else {
+        difficultyLevel = 'Hard'
+    }
+    checkForPAndD()
+}
+
+// Go the Game Page and Saves the Player Names
+function goToGame() {
+    localStorage.setItem('player1Name', player1Name.value)
+    localStorage.setItem('player2Name', player2Name.value)
+
+    window.location.href = "http://127.0.0.1:5500/Projects/learn-java-project/gamePage.html"
+}
+
+// Timer 
+/* setInterval(() => {
     if (time > 0) {
         time--
         showTimer.textContent = time
     }
 
-}, 1000)
+}, 1000) */
 
+// Shows Qeustions in Game Page 
 function showQeustions() {
     // if (difficultyBtn.id === 'easy-btn') {
     playerTurnElement.textContent = `Player ${turn}'s turn`
@@ -185,12 +220,14 @@ function showQeustions() {
 
 }
 
+// Switch Turns 
 function switchTurn() {
     if (turn === 1) {
         turn = 2
     }
 }
 
+// Checks if the Player turn in Done 
 function checkEndOfTurn() {
     if (questionIndex === easyQuestion.length && turn === 1 || time === 0 && turn === 1) {
         switchTurn()
@@ -201,8 +238,19 @@ function checkEndOfTurn() {
         checkForWinner()
     }
 }
-function handleOptionsClick(event) {
 
+// Check Who is the Winner or if it's a Tie
+function checkForWinner() {
+    if (p1Score === p2Score) {
+        tie = true
+    }
+    else if (p1Score > p2Score) {
+        winner = player1Name.textContent
+    }
+    else { winner = player2Name.textContent }
+}
+// Check if the Clicked Option is right 
+function handleOptionsClick(event) {
     if (event.target.textContent === easyQuestion[questionIndex].rightAnswer) {
         if (turn === 1) {
             p1Score++
@@ -215,24 +263,16 @@ function handleOptionsClick(event) {
     checkEndOfTurn()
     showQeustions()
 }
-function checkForWinner() {
-    if (p1Score === p2Score) {
-        tie = true
-    }
-    else if (p1Score > p2Score) {
-        winner = player1Name.textContent
-    }
-    else { winner = player2Name.textContent }
-}
 
 
 
-showQeustions()
+// Functions Call
+//showQeustions()
 
-// Event Listener
-optAll.forEach((element) => {
-    element.addEventListener('click', handleOptionsClick)
-})
-
-
+// Event Listeners
+optAll.forEach(element => element.addEventListener('click', handleOptionsClick))
+player1Name.addEventListener('input', checkForPAndD)
+player2Name.addEventListener('input', checkForPAndD)
+difficultyBtn.forEach(element => element.addEventListener('click', difficultyLevelSelection))
+startBtn.addEventListener('click', goToGame)
 
