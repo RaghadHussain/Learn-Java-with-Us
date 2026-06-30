@@ -141,6 +141,7 @@ main {
     font-family: "Fira Code", monospace;
     font-size: 13px;
     color: #8b949e;
+    cursor: pointer;
     transition: all .2s;
 }
 

@@ -19,17 +19,17 @@ const op3 = document.querySelector('#option3-btn')
 const op4 = document.querySelector('#option4-btn')
 const playerTurnElement = document.querySelector('#player-turn')
 
-// Result Page 
 
+// Result Page 
+const backbtnElement = document.querySelector('#back-home-btn')
 
 
 // Variables
 let turn = 1
 let p1Score = 0
 let p2Score = 0
-let winner = false
 let tie = false
-let winnerName
+let winnerName = null
 let time = 60
 let questionIndex = 0
 let difficultyLevel = null
@@ -180,7 +180,7 @@ function checkForPAndD() {
 
 function difficultyLevelSelection(event) {
     if (event.target.textContent === 'Easy') {
-        difficultyLevel = 'Esay'
+        difficultyLevel = 'Easy'
     }
     else if (event.target.textContent === 'Medium') {
         difficultyLevel = 'Medium'
@@ -199,14 +199,7 @@ function goToGame() {
     window.location.href = "http://127.0.0.1:5500/Projects/learn-java-project/gamePage.html"
 }
 
-// Timer 
-/* setInterval(() => {
-    if (time > 0) {
-        time--
-        showTimer.textContent = time
-    }
 
-}, 1000) */
 
 // Shows Qeustions in Game Page 
 function showQeustions() {
@@ -230,9 +223,9 @@ function switchTurn() {
 // Checks if the Player turn in Done 
 function checkEndOfTurn() {
     if (questionIndex === easyQuestion.length && turn === 1 || time === 0 && turn === 1) {
-        switchTurn()
         questionIndex = 0
         time = 60
+        switchTurn()
     }
     else if (questionIndex === easyQuestion.length && turn === 2 || time === 0 && turn === 2) {
         checkForWinner()
@@ -245,10 +238,11 @@ function checkForWinner() {
         tie = true
     }
     else if (p1Score > p2Score) {
-        winner = player1Name.textContent
+        winnerName = player1Name.textContent
     }
-    else { winner = player2Name.textContent }
+    else { winnerName = player2Name.textContent }
 }
+
 // Check if the Clicked Option is right 
 function handleOptionsClick(event) {
     if (event.target.textContent === easyQuestion[questionIndex].rightAnswer) {
@@ -261,18 +255,53 @@ function handleOptionsClick(event) {
     }
     questionIndex++
     checkEndOfTurn()
+    checkIfFinshed()
+    showQeustions()
+}
+
+function checkIfFinshed() {
+    if (winnerName != null || tie != false) {
+        showResultsBtn.hidden = false
+    }
+}
+
+
+// Functions Call
+if (showTimer) {
+    setInterval(() => {
+        if (time > 0) {
+            time--
+            showTimer.textContent = time
+        }
+
+    }, 1000)
+}
+
+if (qeustion) {
     showQeustions()
 }
 
 
 
-// Functions Call
-//showQeustions()
-
 // Event Listeners
 optAll.forEach(element => element.addEventListener('click', handleOptionsClick))
-player1Name.addEventListener('input', checkForPAndD)
-player2Name.addEventListener('input', checkForPAndD)
-difficultyBtn.forEach(element => element.addEventListener('click', difficultyLevelSelection))
-startBtn.addEventListener('click', goToGame)
 
+if (player1Name && player2Name) {
+    player1Name.addEventListener('input', checkForPAndD)
+    player2Name.addEventListener('input', checkForPAndD)
+}
+difficultyBtn.forEach(element => element.addEventListener('click', difficultyLevelSelection))
+if (startBtn) {
+    startBtn.addEventListener('click', goToGame)
+}
+if (quitGameBtn) {
+    quitGameBtn.addEventListener('click', (event) => window.location.href = "http://127.0.0.1:5500/Projects/learn-java-project/index.html")
+}
+
+if (showResultsBtn) {
+    showResultsBtn.addEventListener('click', (event) => window.location.href = "http://127.0.0.1:5500/Projects/learn-java-project/resultsPage.html")
+}
+
+if (backbtnElement) {
+    backbtnElement.addEventListener('click', (event) => window.location.href = "http://127.0.0.1:5500/Projects/learn-java-project/index.html")
+}
