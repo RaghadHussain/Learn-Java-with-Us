@@ -124,9 +124,7 @@ main {
     gap: 8px;
 }
 
-.easy-btn,
-.med-btn,
-.hard-btn {
+.difficulty-button {
     flex: 1;
     padding: 8px 0;
     border-radius: 7px;
@@ -138,32 +136,32 @@ main {
     transition: all .15s;
 }
 
-.easy-btn {
+#easy-btn {
     color: #3fb950;
 }
 
-.easy-btn:hover,
-.easy-btn:active {
+#easy-btn:hover,
+#easy-btn:active {
     background-color: #3fb95018;
     border-color: #3fb950;
 }
 
-.med-btn {
+#med-btn {
     color: #d29922;
 }
 
-.med-btn:hover,
-.med-btn:active {
+#med-btn:hover,
+#med-btn:active {
     background-color: #d2992218;
     border-color: #d29922;
 }
 
-.hard-btn {
+#hard-btn {
     color: #f85149;
 }
 
-.hard-btn:hover,
-.hard-btn:active {
+#hard-btn:hover,
+#hard-btn:active {
     background-color: #f8514918;
     border-color: #f85149;
 }
