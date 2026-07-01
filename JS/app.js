@@ -44,6 +44,7 @@ const p1ScoreSaved = localStorage.getItem('p1Score')
 const p2ScoreSaved = localStorage.getItem('p2Score')
 const tieSaved = localStorage.getItem('tie')
 const winnerNameSaved = localStorage.getItem('winnerName')
+const difficultyLevelSaved = localStorage.getItem('difficultyLevel')
 
 
 //Arrays 
@@ -204,20 +205,34 @@ function difficultyLevelSelection(event) {
 function goToGame() {
     localStorage.setItem('player1Name', player1Name.value)
     localStorage.setItem('player2Name', player2Name.value)
+    localStorage.setItem('difficultyLevel', difficultyLevel)
 
     window.location.href = "http://127.0.0.1:5500/Projects/learn-java-project/gamePage.html"
+}
+
+//Get the Difficulty of the Qeustions
+function getQeustionsDifficulty() {
+    if (difficultyLevelSaved === 'Easy') {
+        return easyQuestion
+    }
+    else if (difficultyLevelSaved === 'Medium') {
+        return medQuestion
+    }
+    else {
+        return hardQuestion
+    }
 }
 
 // Shows Qeustions in Game Page 
 function showQeustions() {
     // if (difficultyBtn.id === 'easy-btn') {
+    const qeustionsToShow = getQeustionsDifficulty()
     playerTurnElement.textContent = `Player ${turn}'s turn`
-    qeustion.textContent = easyQuestion[questionIndex].question
-    op1.textContent = easyQuestion[questionIndex].option1
-    op2.textContent = easyQuestion[questionIndex].option2
-    op3.textContent = easyQuestion[questionIndex].option3
-    op4.textContent = easyQuestion[questionIndex].option4
-
+    qeustion.textContent = qeustionsToShow[questionIndex].question
+    op1.textContent = qeustionsToShow[questionIndex].option1
+    op2.textContent = qeustionsToShow[questionIndex].option2
+    op3.textContent = qeustionsToShow[questionIndex].option3
+    op4.textContent = qeustionsToShow[questionIndex].option4
 }
 
 // Switch Turns 
@@ -229,12 +244,13 @@ function switchTurn() {
 
 // Checks if the Player turn in Done 
 function checkEndOfTurn() {
-    if (questionIndex === easyQuestion.length && turn === 1 || time === 0 && turn === 1) {
+    const qeustionsToShow = getQeustionsDifficulty()
+    if (questionIndex === qeustionsToShow.length && turn === 1 || time === 0 && turn === 1) {
         questionIndex = 0
         time = 60
         switchTurn()
     }
-    else if (questionIndex === easyQuestion.length && turn === 2 || time === 0 && turn === 2) {
+    else if (questionIndex === qeustionsToShow.length && turn === 2 || time === 0 && turn === 2) {
         checkForWinner()
     }
 }
@@ -252,7 +268,8 @@ function checkForWinner() {
 
 // Check if the Clicked Option is right 
 function handleOptionsClick(event) {
-    if (event.target.textContent === easyQuestion[questionIndex].rightAnswer) {
+    const qeustionsToShow = getQeustionsDifficulty()
+    if (event.target.textContent === qeustionsToShow[questionIndex].rightAnswer) {
         if (turn === 1) {
             p1Score++
         }
@@ -268,6 +285,7 @@ function handleOptionsClick(event) {
     }
 }
 
+// Checks if the Game is Finshed and Show the Result Button
 function checkIfFinshed() {
     if (winnerName != null || tie != false) {
         showResultsBtn.hidden = false
@@ -278,6 +296,7 @@ function checkIfFinshed() {
     }
 }
 
+// Show the Saved Results Information in the Result Page
 function showSavedResults() {
     if (winnerNameSaved) {
         winnerNameElement.textContent = `Congrats ${winnerNameSaved}!!`
