@@ -207,7 +207,7 @@ function goToGame() {
     localStorage.setItem('player2Name', player2Name.value)
     localStorage.setItem('difficultyLevel', difficultyLevel)
 
-    window.location.href = "http://127.0.0.1:5500/Projects/learn-java-project/html/gamePage.html"
+    window.location.href = "./html/gamePage.html"
 }
 
 //Get the Difficulty of the Qeustions
@@ -375,13 +375,13 @@ if (startBtn) {
     startBtn.addEventListener('click', goToGame)
 }
 if (quitGameBtn) {
-    quitGameBtn.addEventListener('click', (event) => window.location.href = "http://127.0.0.1:5500/Projects/learn-java-project/index.html")
+    quitGameBtn.addEventListener('click', (event) => window.location.href = "../index.html")
 }
 
 if (showResultsBtn) {
-    showResultsBtn.addEventListener('click', (event) => window.location.href = "http://127.0.0.1:5500/Projects/learn-java-project/html/resultsPage.html")
+    showResultsBtn.addEventListener('click', (event) => window.location.href = "./resultsPage.html")
 }
 
 if (backbtnElement) {
-    backbtnElement.addEventListener('click', (event) => window.location.href = "http://127.0.0.1:5500/Projects/learn-java-project/index.html")
+    backbtnElement.addEventListener('click', (event) => window.location.href = "../index.html")
 }
