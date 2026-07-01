@@ -302,15 +302,35 @@ function checkIfFinshed() {
 
 // Show the Saved Results Information in the Result Page
 function showSavedResults() {
-    if (winnerNameSaved) {
+    console.log(winnerNameSaved)
+    if (!winnerNameSaved || winnerNameSaved !== 'null') {
         winnerNameElement.textContent = `Congrats ${winnerNameSaved}!!`
     }
-    else if (tieSaved === 'true') {
+    else if (winnerNameSaved === 'null') {
         winnerNameElement.textContent = 'It\'s a Tie !'
     }
 
     p1ScoreElement.textContent = `${player1NameSaved}'s Score is ${p1ScoreSaved}`
     p2ScoreElement.textContent = `${player2NameSaved}'s Score is ${p2ScoreSaved}`
+}
+
+// Show the Questions to Review in the Result Page
+function displayQuestions() {
+    const questions = getQeustionsDifficulty()
+
+    questions.forEach((question) => {
+        const newElement = document.createElement('p')
+        console.log(question)
+
+        newElement.textContent = `Question: ${question.question} \nAnswer: ${question.rightAnswer}`
+        newElement.style.fontSize = '15px'
+        newElement.style.fontFamily = '"Fira Code", monospace'
+        newElement.style.color = '#58a6ff'
+        newElement.style.marginBottom = '13px'
+        newElement.style.padding = '5px'
+        newElement.style.whiteSpace = 'pre-line'
+        qeustionReviewElement.appendChild(newElement)
+    })
 }
 
 
@@ -326,9 +346,6 @@ if (showTimer) {
                 checkEndOfTurn()
                 showQeustions()
             }
-            else {
-
-            }
         }
 
     }, 1000)
@@ -340,6 +357,10 @@ if (qeustion) {
 
 if (p1ScoreElement && p2ScoreElement) {
     showSavedResults()
+}
+
+if (qeustionReviewElement) {
+    displayQuestions()
 }
 
 // Event Listeners
