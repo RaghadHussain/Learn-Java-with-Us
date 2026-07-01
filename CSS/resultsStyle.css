@@ -94,12 +94,6 @@ main {
     letter-spacing: 0.04em;
 }
 
-#questions-answers {
-    font-family: "Inter", sans-serif;
-    font-size: 13px;
-    color: #8b949e;
-}
-
 #back-home-btn {
     width: 100%;
 }
