@@ -225,9 +225,13 @@ function getQeustionsDifficulty() {
 
 // Shows Qeustions in Game Page 
 function showQeustions() {
-    // if (difficultyBtn.id === 'easy-btn') {
     const qeustionsToShow = getQeustionsDifficulty()
-    playerTurnElement.textContent = `Player ${turn}'s turn`
+    if (turn === 1) {
+        playerTurnElement.textContent = `It's ${player1NameSaved}'s turn`
+    }
+    else {
+        playerTurnElement.textContent = `It's ${player2NameSaved}'s turn`
+    }
     qeustion.textContent = qeustionsToShow[questionIndex].question
     op1.textContent = qeustionsToShow[questionIndex].option1
     op2.textContent = qeustionsToShow[questionIndex].option2
