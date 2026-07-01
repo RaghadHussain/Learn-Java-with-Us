@@ -186,6 +186,7 @@ function checkForPAndD() {
     }
 }
 
+// Check For Difficulty Selected
 function difficultyLevelSelection(event) {
     if (event.target.textContent === 'Easy') {
         difficultyLevel = 'Easy'
@@ -206,8 +207,6 @@ function goToGame() {
 
     window.location.href = "http://127.0.0.1:5500/Projects/learn-java-project/gamePage.html"
 }
-
-
 
 // Shows Qeustions in Game Page 
 function showQeustions() {
@@ -289,7 +288,6 @@ function showSavedResults() {
 
     p1ScoreElement.textContent = `${player1NameSaved}'s Score is ${p1ScoreSaved}`
     p2ScoreElement.textContent = `${player2NameSaved}'s Score is ${p2ScoreSaved}`
-
 }
 
 
@@ -299,6 +297,15 @@ if (showTimer) {
         if (time > 0) {
             time--
             showTimer.textContent = time
+        }
+        else {
+            if (turn == 1) {
+                checkEndOfTurn()
+                showQeustions()
+            }
+            else {
+
+            }
         }
 
     }, 1000)
